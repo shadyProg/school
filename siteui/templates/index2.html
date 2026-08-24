@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,25 +13,25 @@
 		<!-- SITE TITLE -->
 		<title>Eduleb - Education HTML Template</title>			
 		<!-- Latest Bootstrap min CSS -->
-		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">		
+		<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
 		<!-- Google Font -->
 		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<!-- Font Awesome CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-		<link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/fonts/themify-icons.css">
+		<link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/fonts/themify-icons.css' %}">
 		<!--- owl carousel Css-->
-		<link rel="stylesheet" href="assets/owlcarousel/css/owl.carousel.css">
-		<link rel="stylesheet" href="assets/owlcarousel/css/owl.theme.css">	
+		<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.carousel.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.theme.css' %}">
 		<!--jquery-simple-mobilemenu Css-->
-        <link rel="stylesheet" href="assets/css/jquery-simple-mobilemenu.css">			
+		<link rel="stylesheet" href="{% static 'assets/css/jquery-simple-mobilemenu.css' %}">
 		<!-- MAGNIFIC CSS -->
-		<link rel="stylesheet" href="assets/css/magnific-popup.css">		
+		<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
 		<!-- animate CSS -->
-		<link rel="stylesheet" href="assets/css/animate.css">	
+		<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
 		<!-- Style CSS -->					
-		<link rel="stylesheet" href="assets/css/style.css">					
+		<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -53,7 +54,7 @@
 				<div class="row">
 					<div class="col-20 align-self-center">
 						<div class="site-logo">
-							<a href="index.html"><img src="assets/img/logo.png" alt=""></a>          				
+							<a href="{% url 'siteui:index' %}"><img src="{% static 'assets/img/logo.png' %}" alt=""></a>
 						</div>
 					</div><!--- END Col -->
 					
@@ -66,7 +67,7 @@
 										<li><a href="index2.html">Home 02</a></li>
 									</ul>
 								</li>
-								<li><a href="about.html">About</a></li>				  				  
+								<li><a href="{% url 'siteui:about' %}">About</a></li>
 								<li class="menu-item-has-children"><a href="course.html">Course</a>
 									<ul>										
 										<li><a href="course.html">Course</a></li>
@@ -88,7 +89,7 @@
 										<li><a href="blog_single.html">Blog Details</a></li>
 									</ul>
 								</li>							  
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="{% url 'siteui:contact' %}">Contact</a></li>
 							</ul>
 						</nav>
 					</div><!--- END Col -->
@@ -140,7 +141,7 @@
 				<div class="row">
 				  <div class="col-lg-6 col-sm-12 col-xs-12">
 					<div class="hero-text-img2">
-						<img src="assets/img/home-img1.png" class="img-fluid" alt="" />
+						<img src="{% static 'assets/img/home-img1.png' %}" class="img-fluid" alt="" />
 					</div>					
 				  </div><!--- END COL -->					  
 				  <div class="col-lg-6 col-sm-12 col-xs-12">
@@ -178,15 +179,15 @@
 					</div><!-- END COL  -->
 					<div class="col-lg-8 col-sm-8 col-xs-12 text-center">
 						<div class="partner">
-							<a href="#"><img src="assets/img/clients/1.png" alt="image"></a>
-							<a href="#"><img src="assets/img/clients/2.png" alt="image"></a>
-							<a href="#"><img src="assets/img/clients/3.png" alt="image"></a>
-							<a href="#"><img src="assets/img/clients/4.png" alt="image"></a>
-							<a href="#"><img src="assets/img/clients/5.png" alt="image"></a>
-							<a href="#"><img src="assets/img/clients/2.png" alt="image"></a>
-							<a href="#"><img src="assets/img/clients/1.png" alt="image"></a>
-							<a href="#"><img src="assets/img/clients/3.png" alt="image"></a>
-							<a href="#"><img src="assets/img/clients/4.png" alt="image"></a>
+							<a href="#"><img src="{% static 'assets/img/clients/1.png' %}" alt="image"></a>
+							<a href="#"><img src="{% static 'assets/img/clients/2.png' %}" alt="image"></a>
+							<a href="#"><img src="{% static 'assets/img/clients/3.png' %}" alt="image"></a>
+							<a href="#"><img src="{% static 'assets/img/clients/4.png' %}" alt="image"></a>
+							<a href="#"><img src="{% static 'assets/img/clients/5.png' %}" alt="image"></a>
+							<a href="#"><img src="{% static 'assets/img/clients/2.png' %}" alt="image"></a>
+							<a href="#"><img src="{% static 'assets/img/clients/1.png' %}" alt="image"></a>
+							<a href="#"><img src="{% static 'assets/img/clients/3.png' %}" alt="image"></a>
+							<a href="#"><img src="{% static 'assets/img/clients/4.png' %}" alt="image"></a>
 						</div>
 					</div><!-- END COL  -->
 				</div><!--END  ROW  -->
@@ -204,7 +205,7 @@
 				<div class="row">													
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="cat_list_two">
-							<img src="assets/img/cat1.jpg" alt="" />
+							<img src="{% static 'assets/img/cat1.jpg' %}" alt="" />
 							<span>02 Courses</span>
 							<h4><a href="#">Digital Marketing</a></h4>
 							<p>We offer a brand new approach to the most basic learning paradigms.</p>
@@ -212,7 +213,7 @@
 					</div><!--- END COL -->										
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="cat_list_two">
-							<img src="assets/img/cat2.jpg" alt="" />
+							<img src="{% static 'assets/img/cat2.jpg' %}" alt="" />
 							<span>04 Courses</span>
 							<h4><a href="#">Ui/UX Design</a></h4>
 							<p>We offer a brand new approach to the most basic learning paradigms.</p>
@@ -220,7 +221,7 @@
 					</div><!--- END COL -->										
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="cat_list_two">
-							<img src="assets/img/cat3.jpg" alt="" />
+							<img src="{% static 'assets/img/cat3.jpg' %}" alt="" />
 							<span>01 Courses</span>
 							<h4><a href="#">Content Marketing</a></h4>
 							<p>We offer a brand new approach to the most basic learning paradigms.</p>
@@ -228,7 +229,7 @@
 					</div><!--- END COL -->										
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="cat_list_two">
-							<img src="assets/img/cat4.jpg" alt="" />
+							<img src="{% static 'assets/img/cat4.jpg' %}" alt="" />
 							<span>05 Courses</span>
 							<h4><a href="#">Photo lifestyle</a></h4>
 							<p>We offer a brand new approach to the most basic learning paradigms.</p>
@@ -236,7 +237,7 @@
 					</div><!--- END COL -->										
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="cat_list_two">
-							<img src="assets/img/cat5.jpg" alt="" />
+							<img src="{% static 'assets/img/cat5.jpg' %}" alt="" />
 							<span>03 Courses</span>
 							<h4><a href="#">Graphic Design</a></h4>
 							<p>We offer a brand new approach to the most basic learning paradigms.</p>
@@ -244,7 +245,7 @@
 					</div><!--- END COL -->										
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="cat_list_two">
-							<img src="assets/img/cat6.jpg" alt="" />
+							<img src="{% static 'assets/img/cat6.jpg' %}" alt="" />
 							<span>04 Courses</span>
 							<h4><a href="#">Interior Design</a></h4>
 							<p>We offer a brand new approach to the most basic learning paradigms.</p>
@@ -252,7 +253,7 @@
 					</div><!--- END COL -->										
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="cat_list_two">
-							<img src="assets/img/cat7.jpg" alt="" />
+							<img src="{% static 'assets/img/cat7.jpg' %}" alt="" />
 							<span>02 Courses</span>
 							<h4><a href="#">Arts & Design</a></h4>
 							<p>We offer a brand new approach to the most basic learning paradigms.</p>
@@ -260,7 +261,7 @@
 					</div><!--- END COL -->										
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="cat_list_two">
-							<img src="assets/img/cat8.jpg" alt="" />
+							<img src="{% static 'assets/img/cat8.jpg' %}" alt="" />
 							<span>01 Courses</span>
 							<h4><a href="#">Visual design</a></h4>
 							<p>We offer a brand new approach to the most basic learning paradigms.</p>
@@ -290,7 +291,7 @@
 					<div class="col-lg-4 col-sm-6 col-xs-12">
 						<div class="single_course">
 							<div class="single_c_img">
-								<img src="assets/img/course/1.png" class="img-fluid" alt="course-image" />
+								<img src="{% static 'assets/img/course/1.png' %}" class="img-fluid" alt="course-image" />
 								<span>Education</span>
 							</div>
 							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -303,7 +304,7 @@
 					<div class="col-lg-4 col-sm-6 col-xs-12">
 						<div class="single_course">
 							<div class="single_c_img">
-								<img src="assets/img/course/2.png" class="img-fluid" alt="course-image" />
+								<img src="{% static 'assets/img/course/2.png' %}" class="img-fluid" alt="course-image" />
 								<span>UI/UX</span>
 							</div>
 							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -316,7 +317,7 @@
 					<div class="col-lg-4 col-sm-6 col-xs-12">
 						<div class="single_course">
 							<div class="single_c_img">
-								<img src="assets/img/course/3.png" class="img-fluid" alt="course-image" />
+								<img src="{% static 'assets/img/course/3.png' %}" class="img-fluid" alt="course-image" />
 								<span>Lifestyle</span>
 							</div>
 							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -329,7 +330,7 @@
 					<div class="col-lg-4 col-sm-6 col-xs-12">
 						<div class="single_course">
 							<div class="single_c_img">
-								<img src="assets/img/course/4.png" class="img-fluid" alt="course-image" />
+								<img src="{% static 'assets/img/course/4.png' %}" class="img-fluid" alt="course-image" />
 								<span>Science</span>
 							</div>
 							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -342,7 +343,7 @@
 					<div class="col-lg-4 col-sm-6 col-xs-12">
 						<div class="single_course">
 							<div class="single_c_img">
-								<img src="assets/img/course/5.png" class="img-fluid" alt="course-image" />
+								<img src="{% static 'assets/img/course/5.png' %}" class="img-fluid" alt="course-image" />
 								<span>Modern</span>
 							</div>
 							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -355,7 +356,7 @@
 					<div class="col-lg-4 col-sm-6 col-xs-12">
 						<div class="single_course">
 							<div class="single_c_img">
-								<img src="assets/img/course/6.png" class="img-fluid" alt="course-image" />
+								<img src="{% static 'assets/img/course/6.png' %}" class="img-fluid" alt="course-image" />
 								<span>Marketing</span>
 							</div>
 							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -427,7 +428,7 @@
 				<div class="row">								
 					<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
 						<div class="ab_img">
-							<img src="assets/img/about1.png" class="img-fluid" alt="image">
+							<img src="{% static 'assets/img/about1.png' %}" class="img-fluid" alt="image">
 						</div>
 					</div><!--- END COL -->						
 					<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
@@ -459,7 +460,7 @@
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="our-team">
 							<div class="team-content">
-								<a href="#"><img src="assets/img/team/team1.jpg" alt=""></a>
+								<a href="#"><img src="{% static 'assets/img/team/team1.jpg' %}" alt=""></a>
 								<ul class="social-links">
 									<li><a href="#"><i class="fa-solid fa-x"></i></a></li>
 									<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -479,7 +480,7 @@
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="our-team">
 							<div class="team-content">
-								<a href="#"><img src="assets/img/team/team2.jpg" alt=""></a>
+								<a href="#"><img src="{% static 'assets/img/team/team2.jpg' %}" alt=""></a>
 								<ul class="social-links">
 									<li><a href="#"><i class="fa-solid fa-x"></i></a></li>
 									<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -499,7 +500,7 @@
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="our-team">
 							<div class="team-content">
-								<a href="#"><img src="assets/img/team/team3.jpg" alt=""></a>
+								<a href="#"><img src="{% static 'assets/img/team/team3.jpg' %}" alt=""></a>
 								<ul class="social-links">
 									<li><a href="#"><i class="fa-solid fa-x"></i></a></li>
 									<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -519,7 +520,7 @@
 					<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="our-team">
 							<div class="team-content">
-								<a href="#"><img src="assets/img/team/team4.jpg" alt=""></a>
+								<a href="#"><img src="{% static 'assets/img/team/team4.jpg' %}" alt=""></a>
 								<ul class="social-links">
 									<li><a href="#"><i class="fa-solid fa-x"></i></a></li>
 									<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -580,7 +581,7 @@
 					<div class="col-lg-12 col-sm-12 col-xs-12">
 						<div id="testimonial-slider2" class="owl-carousel">
 							<div class="testimonial">
-								<img src="assets/img/quote.png" alt="" />
+								<img src="{% static 'assets/img/quote.png' %}" alt="" />
 								<div class="testimonial_content">													
 									<i class="ti-star"></i>
 									<i class="ti-star"></i>
@@ -590,13 +591,13 @@
 									<p>Aqestic optio amet a ququam saepe aliquid voluate dicta fuga dolor saerror sed earum a magni soluta quam minus dolor dolor sed earum a magni soluta autem dolor error error sit quam minus sint rem a rerum dolobus veritatis delectus.</p>
 								</div>
 								<div class="testi_pic_title">
-									<img src="assets/img/testimonial/1.png" alt="">
+									<img src="{% static 'assets/img/testimonial/1.png' %}" alt="">
 									<h4>Ajmain Adil</h4>
 									<p>Groton Inc</p>
 								</div>
 							</div><!-- END TESTIMONIAL -->
 							<div class="testimonial">
-							<img src="assets/img/quote.png" alt="" />
+							<img src="{% static 'assets/img/quote.png' %}" alt="" />
 								<div class="testimonial_content">													
 									<i class="ti-star"></i>
 									<i class="ti-star"></i>
@@ -606,13 +607,13 @@
 									<p>Aqestic optio amet a ququam saepe aliquid voluate dicta fuga dolor saerror sed earum a magni soluta quam minus dolor dolor sed earum a magni soluta autem dolor error error sit quam minus sint rem a rerum dolobus veritatis delectus.</p>
 								</div>
 								<div class="testi_pic_title">
-									<img src="assets/img/testimonial/2.png" alt="">
+									<img src="{% static 'assets/img/testimonial/2.png' %}" alt="">
 									<h4>Sharukh Khan</h4>
 									<p>Red Chili Inc</p>
 								</div>
 							</div><!-- END TESTIMONIAL -->
 							<div class="testimonial">
-								<img src="assets/img/quote.png" alt="" />
+								<img src="{% static 'assets/img/quote.png' %}" alt="" />
 								<div class="testimonial_content">													
 									<i class="ti-star"></i>
 									<i class="ti-star"></i>
@@ -622,13 +623,13 @@
 									<p>Aqestic optio amet a ququam saepe aliquid voluate dicta fuga dolor saerror sed earum a magni soluta quam minus dolor dolor sed earum a magni soluta autem dolor error error sit quam minus sint rem a rerum dolobus veritatis delectus.</p>
 								</div>
 								<div class="testi_pic_title">
-									<img src="assets/img/testimonial/3.png" alt="">
+									<img src="{% static 'assets/img/testimonial/3.png' %}" alt="">
 									<h4>Anushka sharma</h4>
 									<p>Naika Company</p>
 								</div>
 							</div><!-- END TESTIMONIAL -->
 							<div class="testimonial">
-								<img src="assets/img/quote.png" alt="" />
+								<img src="{% static 'assets/img/quote.png' %}" alt="" />
 								<div class="testimonial_content">													
 									<i class="ti-star"></i>
 									<i class="ti-star"></i>
@@ -638,13 +639,13 @@
 									<p>Aqestic optio amet a ququam saepe aliquid voluate dicta fuga dolor saerror sed earum a magni soluta quam minus dolor dolor sed earum a magni soluta autem dolor error error sit quam minus sint rem a rerum dolobus veritatis delectus.</p>
 								</div>
 								<div class="testi_pic_title">
-									<img src="assets/img/testimonial/4.png" alt="">
+									<img src="{% static 'assets/img/testimonial/4.png' %}" alt="">
 									<h4>Ajmain Adil</h4>
 									<p>Groton Inc</p>
 								</div>
 							</div><!-- END TESTIMONIAL -->
 							<div class="testimonial">
-								<img src="assets/img/quote.png" alt="" />
+								<img src="{% static 'assets/img/quote.png' %}" alt="" />
 								<div class="testimonial_content">													
 									<i class="ti-star"></i>
 									<i class="ti-star"></i>
@@ -654,7 +655,7 @@
 									<p>Aqestic optio amet a ququam saepe aliquid voluate dicta fuga dolor saerror sed earum a magni soluta quam minus dolor dolor sed earum a magni soluta autem dolor error error sit quam minus sint rem a rerum dolobus veritatis delectus.</p>
 								</div>
 								<div class="testi_pic_title">
-									<img src="assets/img/testimonial/5.png" alt="">
+									<img src="{% static 'assets/img/testimonial/5.png' %}" alt="">
 									<h4>Ajmain Adil</h4>
 									<p>Groton Inc</p>
 								</div>
@@ -676,7 +677,7 @@
 				<div class="row">		
 					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="single_blog">
-							<img src="assets/img/blog/1.jpg" class="img-fluid" alt="image" />
+							<img src="{% static 'assets/img/blog/1.jpg' %}" class="img-fluid" alt="image" />
 							<div class="content_box">
 								<span>May 10, 2024 | <a href="blog.html">Education</a></span>
 								<h2><a href="blog.html">Professional Mobile Painting and Sculpting</a></h2>
@@ -686,7 +687,7 @@
 					</div><!-- END COL-->				
 					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="single_blog">
-							<img src="assets/img/blog/2.jpg" class="img-fluid" alt="image" />
+							<img src="{% static 'assets/img/blog/2.jpg' %}" class="img-fluid" alt="image" />
 							<div class="content_box">
 								<span>May 16, 2024 | <a href="blog.html">Education</a></span>
 								<h2><a href="blog.html">Professional Ceramic Moulding for Beginner</a></h2>
@@ -696,7 +697,7 @@
 					</div><!-- END COL-->
 					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 						<div class="single_blog">
-							<img src="assets/img/blog/3.jpg" class="img-fluid" alt="image" />
+							<img src="{% static 'assets/img/blog/3.jpg' %}" class="img-fluid" alt="image" />
 							<div class="content_box">
 								<span>May 18, 2024 | <a href="blog.html">Programing</a></span>
 								<h2><a href="blog.html">Education Is About Create Leaders For Tomorrow </a></h2>
@@ -715,7 +716,7 @@
 				<div class="row">						
 					<div class="col-lg-3 col-sm-6 col-xs-12">
 						<div class="single_footer">
-							<a href="index.html"><img src="assets/img/logo.png" alt=""></a>         
+							<a href="index.html"><img src="{% static 'assets/img/logo.png' %}" alt=""></a>         
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis dignissim.</p>
 							<div class="social_profile">
 								<ul>
@@ -778,8 +779,8 @@
 						<div class="single_footer">
 							<h4>Download App</h4>
 							<p>Download our app from app store and goole play store.</p>
-							<a href="index.html"><img src="assets/img/google-play.jpg" class="foot_img" alt=""></a>  
-							<a href="index.html"><img src="assets/img/app-store.jpg" class="foot_img" alt=""></a>  
+							<a href="index.html"><img src="{% static 'assets/img/google-play.jpg' %}" class="foot_img" alt=""></a>  
+							<a href="index.html"><img src="{% static 'assets/img/app-store.jpg' %}" class="foot_img" alt=""></a>  
 						</div>
 					</div><!--- END COL -->	
 				</div><!--- END ROW -->					
@@ -796,24 +797,24 @@
 		<!-- END FOOTER COPYRIGHT -->	
 	
 	<!-- Latest jQuery -->
-		<script src="assets/js/jquery-1.12.4.min.js"></script>
+		<script src="{% static 'assets/js/jquery-1.12.4.min.js' %}"></script>
 	<!-- Latest compiled and minified Bootstrap -->
-		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
 	<!-- modernizer JS -->		
-		<script src="assets/js/modernizr-2.8.3.min.js"></script>	
+		<script src="{% static 'assets/js/modernizr-2.8.3.min.js' %}"></script>	
 	<!-- jquery-simple-mobilemenu.min -->
-		<script src="assets/js/jquery-simple-mobilemenu.js"></script>		
+		<script src="{% static 'assets/js/jquery-simple-mobilemenu.js' %}"></script>		
 	<!-- owl-carousel min js  -->
-		<script src="assets/owlcarousel/js/owl.carousel.min.js"></script>					
+		<script src="{% static 'assets/owlcarousel/js/owl.carousel.min.js' %}"></script>					
 	<!-- magnific-popup js -->               
-		<script src="assets/js/jquery.magnific-popup.min.js"></script>						
+		<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>						
 	<!-- countTo js -->
-		<script src="assets/js/jquery.inview.min.js"></script>								
+		<script src="{% static 'assets/js/jquery.inview.min.js' %}"></script>								
 	<!-- scrolltopcontrol js -->
-		<script src="assets/js/scrolltopcontrol.js"></script>			
+		<script src="{% static 'assets/js/scrolltopcontrol.js' %}"></script>			
 	<!-- WOW - Reveal Animations When You Scroll -->
-		<script src="assets/js/wow.min.js"></script>				
+		<script src="{% static 'assets/js/wow.min.js' %}"></script>				
 	<!-- scripts js -->
-		<script src="assets/js/scripts.js"></script>
+		<script src="{% static 'assets/js/scripts.js' %}"></script>
     </body>
 </html>
