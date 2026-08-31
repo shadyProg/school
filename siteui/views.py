@@ -21,16 +21,6 @@ def about(req):
     return render(req, 'about.html', context)
 
 
-def blog(req):
-    context = get_section_context('Blog', 'Blog')
-    return render(req, 'blog.html', context)
-
-
-def blog_single(req):
-    context = get_section_context('Blog Single', 'Blog Single')
-    return render(req, 'blog_single.html', context)
-
-
 def course(req):
     context = get_section_context('Course', 'Course')
     return render(req, 'course.html', context)

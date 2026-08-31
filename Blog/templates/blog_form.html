@@ -1,0 +1,390 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if form.instance.pk %}Edit Blog{% else %}New Blog{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="blog-form-wrapper">
+    <div class="blog-form-card">
+        <h1 class="blog-form-heading">
+            {% if form.instance.pk %}Edit Blog Post{% else %}Create New Blog Post{% endif %}
+        </h1>
+
+        {% if form.non_field_errors %}
+            <div class="form-alert form-alert--error">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" novalidate id="blog-form">
+            {% csrf_token %}
+
+            <!-- Title -->
+            <div class="form-group">
+                <label for="id_title">Title <span class="required">*</span></label>
+                <input
+                    type="text"
+                    name="title"
+                    id="id_title"
+                    maxlength="255"
+                    required
+                    value="{{ form.title.value|default_if_none:'' }}"
+                    class="form-control {% if form.title.errors %}is-invalid{% endif %}"
+                >
+                <div class="field-hint"><span id="title-count">0</span>/255</div>
+                {% for error in form.title.errors %}
+                    <div class="field-error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Category -->
+            <div class="form-group">
+                <label for="id_category">Category <span class="required">*</span></label>
+                <input
+                    type="text"
+                    name="category"
+                    id="id_category"
+                    maxlength="255"
+                    required
+                    value="{{ form.category.value|default_if_none:'' }}"
+                    class="form-control {% if form.category.errors %}is-invalid{% endif %}"
+                >
+                {% for error in form.category.errors %}
+                    <div class="field-error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label for="id_description">Description <span class="required">*</span></label>
+                <textarea
+                    name="description"
+                    id="id_description"
+                    rows="6"
+                    required
+                    class="form-control {% if form.description.errors %}is-invalid{% endif %}"
+                >{{ form.description.value|default_if_none:'' }}</textarea>
+                <div class="field-hint"><span id="description-count">0</span> characters</div>
+                {% for error in form.description.errors %}
+                    <div class="field-error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Image -->
+            <div class="form-group">
+                <label for="id_image">Image</label>
+
+                <div class="image-upload">
+                    <img
+                        id="image-preview"
+                        src="{% if form.instance.image %}{{ form.instance.image.url }}{% else %}{% static 'images/default.png' %}{% endif %}"
+                        alt="Preview"
+                    >
+                    <input
+                        type="file"
+                        name="image"
+                        id="id_image"
+                        accept="image/png, image/jpeg, image/webp"
+                        class="form-control-file {% if form.image.errors %}is-invalid{% endif %}"
+                    >
+                </div>
+                <div class="field-hint">PNG, JPG or WEBP. Leave empty to keep the default image.</div>
+                <div id="image-error" class="field-error" hidden></div>
+                {% for error in form.image.errors %}
+                    <div class="field-error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="submit-btn">
+                    {% if form.instance.pk %}Save Changes{% else %}Publish{% endif %}
+                </button>
+                <a href="{% url 'blog_list' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+.blog-form-wrapper {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #1f2328;
+}
+
+.blog-form-card {
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.blog-form-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 24px;
+}
+
+.form-alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.form-alert--error {
+    background: #fde8e8;
+    color: #b42318;
+    border: 1px solid #f6b6b6;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.required {
+    color: #d1242f;
+}
+
+.form-control,
+.form-control-file {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    font-family: inherit;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #0969da;
+    box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+}
+
+.form-control.is-invalid,
+.form-control-file.is-invalid {
+    border-color: #d1242f;
+}
+
+.field-hint {
+    font-size: 0.78rem;
+    color: #6e7781;
+    margin-top: 4px;
+    text-align: right;
+}
+
+.field-error {
+    font-size: 0.8rem;
+    color: #d1242f;
+    margin-top: 6px;
+}
+
+.image-upload {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+#image-preview {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #d0d7de;
+    background: #f6f8fa;
+}
+
+.form-control-file {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 10px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-primary {
+    background: #0969da;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #0860ca;
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: #f6f8fa;
+    color: #1f2328;
+    border-color: #d0d7de;
+}
+
+.btn-secondary:hover {
+    background: #eef1f4;
+}
+
+@media (max-width: 480px) {
+    .blog-form-card {
+        padding: 20px;
+    }
+    .form-actions {
+        flex-direction: column;
+    }
+    .btn {
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+(function () {
+    "use strict";
+
+    const MAX_TITLE_LEN = 255;
+    const MAX_IMAGE_MB = 5;
+    const ALLOWED_TYPES = ["image/png", "image/jpeg", "image/webp"];
+
+    const form = document.getElementById("blog-form");
+    const titleInput = document.getElementById("id_title");
+    const titleCount = document.getElementById("title-count");
+    const descriptionInput = document.getElementById("id_description");
+    const descriptionCount = document.getElementById("description-count");
+    const imageInput = document.getElementById("id_image");
+    const imagePreview = document.getElementById("image-preview");
+    const imageError = document.getElementById("image-error");
+    const submitBtn = document.getElementById("submit-btn");
+    const defaultPreviewSrc = imagePreview.src;
+
+    function updateTitleCount() {
+        titleCount.textContent = titleInput.value.length;
+    }
+
+    function updateDescriptionCount() {
+        descriptionCount.textContent = descriptionInput.value.length;
+    }
+
+    function resetImageState() {
+        imageError.hidden = true;
+        imageError.textContent = "";
+        imageInput.classList.remove("is-invalid");
+    }
+
+    function showImageError(message) {
+        imageError.hidden = false;
+        imageError.textContent = message;
+        imageInput.classList.add("is-invalid");
+        imagePreview.src = defaultPreviewSrc;
+    }
+
+    function handleImageChange() {
+        resetImageState();
+        const file = imageInput.files && imageInput.files[0];
+        if (!file) {
+            imagePreview.src = defaultPreviewSrc;
+            return;
+        }
+
+        if (!ALLOWED_TYPES.includes(file.type)) {
+            showImageError("Please choose a PNG, JPG, or WEBP image.");
+            imageInput.value = "";
+            return;
+        }
+
+        const sizeMb = file.size / (1024 * 1024);
+        if (sizeMb > MAX_IMAGE_MB) {
+            showImageError(`Image must be smaller than ${MAX_IMAGE_MB}MB.`);
+            imageInput.value = "";
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            imagePreview.src = event.target.result;
+        };
+        reader.onerror = function () {
+            showImageError("Could not read that file. Please try another image.");
+            imageInput.value = "";
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function validateForm(event) {
+        let isValid = true;
+
+        if (!titleInput.value.trim()) {
+            titleInput.classList.add("is-invalid");
+            isValid = false;
+        } else {
+            titleInput.classList.remove("is-invalid");
+        }
+
+        if (!descriptionInput.value.trim()) {
+            descriptionInput.classList.add("is-invalid");
+            isValid = false;
+        } else {
+            descriptionInput.classList.remove("is-invalid");
+        }
+
+        if (!isValid) {
+            event.preventDefault();
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+    }
+
+    titleInput.addEventListener("input", updateTitleCount);
+    descriptionInput.addEventListener("input", updateDescriptionCount);
+    imageInput.addEventListener("change", handleImageChange);
+    form.addEventListener("submit", validateForm);
+
+    updateTitleCount();
+    updateDescriptionCount();
+})();
+</script>
+{% endblock %}
