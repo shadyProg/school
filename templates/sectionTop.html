@@ -6,7 +6,20 @@
 						<h1>{{ section_title }}</h1>
 						<ul>
 							<li><a href="{% url 'siteui:index' %}">Home</a></li>
-							<li> / {{ page_link_text }}</li>
+							
+							
+{% if page_link %}
+    <li>
+        /
+        <a href="{% url page_link %}">
+        {{ section_title }}
+        </a>
+    </li>
+{% else %}
+    <li>
+        / {{ section_title }}
+    </li>
+{% endif %}
 						</ul>
 					</div><!-- //.HERO-TEXT -->
 				</div><!--- END COL -->

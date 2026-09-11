@@ -21,15 +21,12 @@
 				<div class="col-lg-7 col-sm-12 col-xs-12">
 					<div class="arti_single">
 						<div class="arti_img_two">
-							<img src="assets/img/blog/3.jpg" class="img-fluid" alt="Blog image" />
+							<img src="{{ blog.image.url }}" class="img-fluid" alt="{{ blog.title }}" />
 						</div>
 						<div class="arti_content ">
-							<p>I almost couldn’t believe it was real! For my first test I had generate some website copy for me. I provided about 50 words to describe my business along with my business name. generated two variants of copy each with several paragraphs of professional sounding copy. I immediately shared the results with a friend who couldn’t believe it was written by an AI. is worth every Yaley and then some. Describe my business along with my business name. generated two variants of copy each with several paragraphs of professional sounding copy. I immediately shared the results with a friend who couldn’t believe it was written by an AI. is worth every Yaley and then some!</p>
-						</div>
-						<div class="arti_sp">
-							<h2>Enhancing Your E-commerce Store With AI Writing Assistants</h2>
-							<img src="assets/img/blog/1.png" class="img-fluid" alt="Blog image" />
-							<p>I immediately shared the results with a friend who couldn’t believe it was written by an AI. is worth every Yaley and then some. Describe my business along with my business name. generated two variants of copy each with several paragraphs of professional sounding copy. I immediately shared the results with a friend who couldn’t believe it was written by an AI. is worth every Yaley and then some!</p>
+							<span>{{ blog.created_at|date:"M d, Y" }} | {{ blog.category }}</span>
+							<h1>{{ blog.title }}</h1>
+							<p>{{ blog.description }}</p>
 						</div>
 						<div class="share_sp">
 							<h4>Share</h4>
@@ -45,8 +42,8 @@
 						<h3 class="blog_head_title">About the author</h3>
 						<div class="single_author">
 							<img src="assets/img/blog/author.jpg" alt="" />
-							<h4>Marina Mojo</h4>
-							 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultricies quam nisi, vel gravida enim accumsan id. Praesent justo quam, auctor et lorem in, pulvinar ornare orci.</p> 
+							<h4>{{ blog.user.get_full_name|default:blog.user.username }}</h4>
+							<p>Published on {{ blog.created_at|date:"F d, Y" }}.</p>
 						</div>
 					</div><!--- END AUTHOR PART -->
 					<div class="comments_part">

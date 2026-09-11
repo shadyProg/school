@@ -7,7 +7,8 @@ class Blog(models.Model):
     description=models.TextField(null=False,blank=False)
     image=models.ImageField(upload_to='image',null=True,blank=True ,default='images/default.png')
     created_at=models.DateTimeField(auto_now_add=True)
-    user=models.ForeignKey(User,on_delete=models.CASCADE,default=1,null=True,blank=True)
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,default=1,null=True,blank=True)
+    #user=models.ForeignKey(User,on_delete=models.CASCADE,default=1,null=True,blank=True)
     # user is exit by default in django auth module. It is used to create a relationship between the blog and the user who created it.
     # on_delete=models.CASCADE that weak reationship between the blog and the user.
     #  If the user is deleted, the blog will also be deleted.

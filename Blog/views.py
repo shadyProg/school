@@ -1,7 +1,4 @@
-from multiprocessing import context
-import re
-
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from Blog.froms import CRUD_BlogForm
@@ -25,7 +22,7 @@ class BlogListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update(get_section_context('Blogs', 'Blog'))
+        context.update(get_section_context('Blogs','Blog:blog_create'))
         return context
         """
         def get_context_data(self, **kwargs):
@@ -46,27 +43,36 @@ class BlogDetailView(DetailView):
     context_object_name = 'blog'
 
 
-class BlogCreateView(CreateView):
+class BlogCreateView( CreateView):# delete LoginRequiredMixin if you want to allow anyone to create a blog post. But it is not recommended.
     model = Blog
     form_class = CRUD_BlogForm
     template_name = 'blog_form.html'
     #fields = ['title', 'category', 'description', 'image', 'user']
-    success_url = reverse_lazy('blog:blog_list')
+    success_url = reverse_lazy('Blog:blog_list')
     #from_validation = True  # This is a custom attribute to indicate that form validation is enabled.
     def form_valid(self, form):
         # Custom form validation logic can be added here if needed.
-        form.instance.user = self.request.user
-        return super(BlogCreateView, self).form_valid(form)
+        if self.request.user.is_authenticated:
+            form.instance.user = self.request.user
 
-class BlogUpdateView(UpdateView):
+        return super(BlogCreateView, self).form_valid(form)
+    def form_invalid(self, form):
+        print("FORM ERRORS:", form.errors)
+        return super().form_invalid(form)
+
+class BlogUpdateView( UpdateView):# delete LoginRequiredMixin if you want to allow anyone to update the blog post. But it is not recommended.
     model = Blog
     form_class = CRUD_BlogForm
     template_name = 'blog_form.html'
-    success_url = reverse_lazy('blog:blog_list')
+    success_url = reverse_lazy('Blog:blog_list')
     def form_valid(self, form):
-        
-        form.instance.user = self.request.user
+        print("FORM VALID:", form.cleaned_data)
+        if self.request.user.is_authenticated:
+            form.instance.user = self.request.user
         return super(BlogCreateView, self).form_valid(form)
+    def form_invalid(self, form):
+        print("FORM ERRORS:", form.errors)
+        return super().form_invalid(form)
 
 
 class BlogDeleteView(DeleteView):

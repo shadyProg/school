@@ -34,7 +34,7 @@
 										<li><a href="404.html">404</a></li>				
 									</ul>
 								</li>							
-								<li class="menu-item-has-children"><a href="blog.html">Blog</a>
+								<li class="menu-item-has-children"><a href="{% url 'Blog:blog_list' %}">Blog</a>
 									<ul>										
 										<li><a href="{% url 'Blog:blog_list' %}">Blog</a></li>
 										{% for blog in blogs %}

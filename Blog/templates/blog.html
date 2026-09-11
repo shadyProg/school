@@ -15,66 +15,22 @@
 		<section id="blog" class="blog_area section-padding">
 			<div class="container">	
 				<div class="row">		
+					{% for blog in blogs %}
 					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="single_blog">
-							<img src="{% static 'assets/img/blog/1.jpg' %}" class="img-fluid" alt="image" />
+							<img src="{{ blog.image.url }}" class="img-fluid" alt="{{ blog.title }}" />
 							<div class="content_box">
-								<span>May 10, 2024 | <a href="blog_single.html">Education</a></span>
-								<h2><a href="blog_single.html">Professional Mobile Painting and Sculpting</a></h2>
-								<a class="btn_one" href="course.html">Read More <i class="ti-arrow-top-right"></i></a>
-							</div>
-						</div>
-					</div><!-- END COL-->				
-					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
-						<div class="single_blog">
-							<img src="{% static 'assets/img/blog/2.jpg' %}" class="img-fluid" alt="image" />
-							<div class="content_box">
-								<span>May 16, 2024 | <a href="blog_single.html">Education</a></span>
-								<h2><a href="blog_single.html">Professional Ceramic Moulding for Beginner</a></h2>
-								<a class="btn_one" href="course.html">Read More <i class="ti-arrow-top-right"></i></a>							
-							</div>
-						</div>
-					</div><!-- END COL-->
-					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-						<div class="single_blog">
-							<img src="{% static 'assets/img/blog/3.jpg' %}" class="img-fluid" alt="image" />
-							<div class="content_box">
-								<span>May 18, 2024 | <a href="blog_single.html">Programing</a></span>
-								<h2><a href="blog_single.html">Education Is About Create Leaders For Tomorrow </a></h2>
-								<a class="btn_one" href="course.html">Read More <i class="ti-arrow-top-right"></i></a>
-							</div>
-						</div>
-					</div><!-- END COL-->	
-					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
-						<div class="single_blog">
-							<img src="{% static 'assets/img/blog/4.jpg' %}" class="img-fluid" alt="image" />
-							<div class="content_box">
-								<span>May 10, 2024 | <a href="blog_single.html">Education</a></span>
-								<h2><a href="blog_single.html">Professional Mobile Painting and Sculpting</a></h2>
-								<a class="btn_one" href="course.html">Read More <i class="ti-arrow-top-right"></i></a>
-							</div>
-						</div>
-					</div><!-- END COL-->				
-					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
-						<div class="single_blog">
-							<img src="{% static 'assets/img/blog/5.jpg' %}" class="img-fluid" alt="image" />
-							<div class="content_box">
-								<span>May 16, 2024 | <a href="blog_single.html">Education</a></span>
-								<h2><a href="blog_single.html">Professional Ceramic Moulding for Beginner</a></h2>
-								<a class="btn_one" href="course.html">Read More <i class="ti-arrow-top-right"></i></a>							
-							</div>
-						</div>
-					</div><!-- END COL-->
-					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-						<div class="single_blog">
-							<img src="{% static 'assets/img/blog/6.jpg' %}" class="img-fluid" alt="image" />
-							<div class="content_box">
-								<span>May 18, 2024 | <a href="blog_single.html">Programing</a></span>
-								<h2><a href="blog_single.html">Education Is About Create Leaders For Tomorrow </a></h2>
-								<a class="btn_one" href="course.html">Read More <i class="ti-arrow-top-right"></i></a>
+								<span>{{ blog.created_at|date:"M d, Y" }} | <a href="{% url 'Blog:blog_detail' pk=blog.pk %}">{{ blog.category }}</a></span>
+								<h2><a href="{% url 'Blog:blog_detail' pk=blog.pk %}">{{ blog.title }}</a></h2>
+								<a class="btn_one" href="{% url 'Blog:blog_detail' pk=blog.pk %}">Read More <i class="ti-arrow-top-right"></i></a>
 							</div>
 						</div>
 					</div><!-- END COL-->						
+					{% empty %}
+					<div class="col-12">
+						<p>No blog posts available yet.</p>
+					</div>
+					{% endfor %}
 				</div><!-- / END ROW -->
 			</div><!-- END CONTAINER  -->
 		</section>	

@@ -18,12 +18,16 @@ class CRUD_BlogForm(forms.ModelForm):
     }))
     #  CharField -> Textarea
     # title
-    image=forms.ImageField(widget=forms.FileInput(attrs={
-        'class':'form-control' , 'placeholder':'blog-image'
-    }))
-    created_at=forms.DateTimeField(widget=forms.DateTimeInput(attrs={
-        'class':'form-control' , 'placeholder':'blog-created_at'
-    }))
+    image= forms.ImageField(
+    required=False,
+    widget=forms.FileInput(attrs={
+        'class': 'form-control',
+    })
+)
+    # forms.ImageField(widget=forms.FileInput(attrs={
+    #     'class':'form-control' , 'placeholder':'blog-image'
+    # }))
+    
 
     
     class Meta:
