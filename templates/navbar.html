@@ -37,11 +37,7 @@
 								<li class="menu-item-has-children"><a href="{% url 'Blog:blog_list' %}">Blog</a>
 									<ul>										
 										<li><a href="{% url 'Blog:blog_list' %}">Blog</a></li>
-										{% for blog in blogs %}
-											<li>
-											<a href="{% url 'Blog:blog_detail' pk=blog.pk %}">Blog Detail</a>
-											</li>
-											{% endfor %}
+										
 										{#<li><a href="{% url 'Blog:blog_detail' pk=blogs.pk %}">Blog Details</a></li>#}
 									</ul>
 								</li>							  

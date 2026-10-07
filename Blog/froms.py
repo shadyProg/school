@@ -1,3 +1,4 @@
+
 from django import forms
 
 from .models import Blog
@@ -32,5 +33,4 @@ class CRUD_BlogForm(forms.ModelForm):
     
     class Meta:
         model = Blog
-        fields = ['title', 'category', 'description', 'image']
-    
+        fields = '__all__'  # Include all fields from the Blog model

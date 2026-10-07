@@ -1,8 +1,15 @@
 from django.shortcuts import render
-
+from Blog.models import Blog
 
 def get_section_context(title, page_link=None):
-    return {'section_title': title,'page_link': page_link}
+    context = {
+        'section_title': title,
+        'page_link': page_link,
+        'blogs': Blog.objects.all(),  # Fetch all blog objects to pass to the context
+        'last_blogs': Blog.objects.all().order_by('-created_at')[:5],  # Fetch the last 5 blogs ordered by creation date
+        'last_three_blogs': Blog.objects.all().order_by('-created_at')[:3]  # Fetch the last 3 blogs ordered by creation date
+    }
+    return context  
 
 # Create your views here.
 def index(req):

@@ -41,6 +41,10 @@ class BlogDetailView(DetailView):
     model = Blog
     template_name = 'blog_single.html'
     context_object_name = 'blog'
+    def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context.update(get_section_context('Blogs Detail','Blog:blog_create'))
+            return context
 
 
 class BlogCreateView( CreateView):# delete LoginRequiredMixin if you want to allow anyone to create a blog post. But it is not recommended.
@@ -50,6 +54,10 @@ class BlogCreateView( CreateView):# delete LoginRequiredMixin if you want to all
     #fields = ['title', 'category', 'description', 'image', 'user']
     success_url = reverse_lazy('Blog:blog_list')
     #from_validation = True  # This is a custom attribute to indicate that form validation is enabled.
+    def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context.update(get_section_context('Blogs Create','Blog:blog_create'))
+            return context
     def form_valid(self, form):
         # Custom form validation logic can be added here if needed.
         if self.request.user.is_authenticated:
